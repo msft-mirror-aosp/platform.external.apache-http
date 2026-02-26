@@ -616,7 +616,7 @@ public abstract class LogFactory {
         }
 
         if (factory != null) {
-            /**
+            /*
              * Always cache using context class loader.
              */
             cacheFactory(contextClassLoader, factory);
@@ -848,7 +848,7 @@ public abstract class LogFactory {
                 throw new LogConfigurationException
                     ("Unexpected IllegalAccessException", e);
             } catch (InvocationTargetException e) {
-                /**
+                /*
                  * InvocationTargetException is thrown by 'invoke' when
                  * the method being invoked (getContextClassLoader) throws
                  * an exception.
