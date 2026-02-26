@@ -45,6 +45,10 @@ filegroup {
 
 java_sdk_library {
     name: "org.apache.http.legacy",
+    defaults: [
+        "android-api-contributor-defaults",
+    ],
+
     srcs: [
         ":org.apache.http.legacy.sources",
         ":org.apache.http.legacy.android.sources",
