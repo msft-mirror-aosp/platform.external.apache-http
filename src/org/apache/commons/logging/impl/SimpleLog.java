@@ -656,7 +656,7 @@ public class SimpleLog implements Log, Serializable {
                 } catch (IllegalAccessException e) {
                     ;  // ignore
                 } catch (InvocationTargetException e) {
-                    /**
+                    /*
                      * InvocationTargetException is thrown by 'invoke' when
                      * the method being invoked (getContextClassLoader) throws
                      * an exception.

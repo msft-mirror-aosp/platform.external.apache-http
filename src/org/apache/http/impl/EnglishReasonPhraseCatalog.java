@@ -129,7 +129,7 @@ public class EnglishReasonPhraseCatalog
 
     // ----------------------------------------------------- Static Initializer
 
-    /** Set up status code to "reason phrase" map. */
+    /* Set up status code to "reason phrase" map. */
     static {
         // HTTP 1.0 Server status codes -- see RFC 1945
         setReason(HttpStatus.SC_OK,
