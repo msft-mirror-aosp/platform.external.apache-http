@@ -1,6 +1,5 @@
 // Signature format: 6.0
 // - style=java
-// - type-argument-spacing=legacy
 package android.net.compatibility {
 
   public class WebAddress {
@@ -243,8 +242,8 @@ package android.net.http {
   }
 
   public class RequestHandle {
-    ctor public RequestHandle(android.net.http.RequestQueue, String, android.net.compatibility.WebAddress, String, java.util.Map<String,String>, java.io.InputStream, int, android.net.http.Request);
-    ctor public RequestHandle(android.net.http.RequestQueue, String, android.net.compatibility.WebAddress, String, java.util.Map<String,String>, java.io.InputStream, int, android.net.http.Request, android.net.http.Connection);
+    ctor public RequestHandle(android.net.http.RequestQueue, String, android.net.compatibility.WebAddress, String, java.util.Map<String, String>, java.io.InputStream, int, android.net.http.Request);
+    ctor public RequestHandle(android.net.http.RequestQueue, String, android.net.compatibility.WebAddress, String, java.util.Map<String, String>, java.io.InputStream, int, android.net.http.Request, android.net.http.Connection);
     method public static String authorizationHeader(boolean);
     method public void cancel();
     method public static String computeBasicAuthResponse(String, String);
@@ -257,7 +256,7 @@ package android.net.http {
     method public void setRedirectCount(int);
     method public void setupBasicAuthResponse(boolean, String, String);
     method public void setupDigestAuthResponse(boolean, String, String, String, String, String, String, String);
-    method public boolean setupRedirect(String, int, java.util.Map<String,String>);
+    method public boolean setupRedirect(String, int, java.util.Map<String, String>);
     method public void waitUntilComplete();
     field public static final int MAX_REDIRECT_COUNT = 16; // 0x10
   }
@@ -272,9 +271,9 @@ package android.net.http {
     method public android.net.http.Request getRequest(org.apache.http.HttpHost);
     method public boolean haveRequest(org.apache.http.HttpHost);
     method protected void queueRequest(android.net.http.Request, boolean);
-    method public android.net.http.RequestHandle queueRequest(String, android.net.compatibility.WebAddress, String, java.util.Map<String,String>, android.net.http.EventHandler, java.io.InputStream, int);
-    method public android.net.http.RequestHandle queueRequest(String, String, java.util.Map<String,String>, android.net.http.EventHandler, java.io.InputStream, int);
-    method public android.net.http.RequestHandle queueSynchronousRequest(String, android.net.compatibility.WebAddress, String, java.util.Map<String,String>, android.net.http.EventHandler, java.io.InputStream, int);
+    method public android.net.http.RequestHandle queueRequest(String, android.net.compatibility.WebAddress, String, java.util.Map<String, String>, android.net.http.EventHandler, java.io.InputStream, int);
+    method public android.net.http.RequestHandle queueRequest(String, String, java.util.Map<String, String>, android.net.http.EventHandler, java.io.InputStream, int);
+    method public android.net.http.RequestHandle queueSynchronousRequest(String, android.net.compatibility.WebAddress, String, java.util.Map<String, String>, android.net.http.EventHandler, java.io.InputStream, int);
     method public void requeueRequest(android.net.http.Request);
     method public void shutdown();
     method public void startTiming();
@@ -1188,7 +1187,7 @@ package org.apache.http.auth {
     method @Deprecated public org.apache.http.auth.AuthScheme getAuthScheme(String, org.apache.http.params.HttpParams) throws IllegalStateException;
     method @Deprecated public java.util.List<String> getSchemeNames();
     method @Deprecated public void register(String, org.apache.http.auth.AuthSchemeFactory);
-    method @Deprecated public void setItems(java.util.Map<String,org.apache.http.auth.AuthSchemeFactory>);
+    method @Deprecated public void setItems(java.util.Map<String, org.apache.http.auth.AuthSchemeFactory>);
     method @Deprecated public void unregister(String);
   }
 
@@ -1303,9 +1302,9 @@ package org.apache.http.auth.params {
 package org.apache.http.client {
 
   @Deprecated public interface AuthenticationHandler {
-    method @Deprecated public java.util.Map<String,org.apache.http.Header> getChallenges(org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.auth.MalformedChallengeException;
+    method @Deprecated public java.util.Map<String, org.apache.http.Header> getChallenges(org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.auth.MalformedChallengeException;
     method @Deprecated public boolean isAuthenticationRequested(org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext);
-    method @Deprecated public org.apache.http.auth.AuthScheme selectScheme(java.util.Map<String,org.apache.http.Header>, org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.auth.AuthenticationException;
+    method @Deprecated public org.apache.http.auth.AuthScheme selectScheme(java.util.Map<String, org.apache.http.Header>, org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.auth.AuthenticationException;
   }
 
   @Deprecated public class CircularRedirectException extends org.apache.http.client.RedirectException {
@@ -1789,7 +1788,7 @@ package org.apache.http.conn.params {
     method @Deprecated public int getMaxForRoute(org.apache.http.conn.routing.HttpRoute);
     method @Deprecated public void setDefaultMaxPerRoute(int);
     method @Deprecated public void setMaxForRoute(org.apache.http.conn.routing.HttpRoute, int);
-    method @Deprecated public void setMaxForRoutes(java.util.Map<org.apache.http.conn.routing.HttpRoute,Integer>);
+    method @Deprecated public void setMaxForRoutes(java.util.Map<org.apache.http.conn.routing.HttpRoute, Integer>);
     field @Deprecated public static final int DEFAULT_MAX_CONNECTIONS_PER_ROUTE = 2; // 0x2
   }
 
@@ -1938,7 +1937,7 @@ package org.apache.http.conn.scheme {
     method @Deprecated public org.apache.http.conn.scheme.Scheme getScheme(org.apache.http.HttpHost);
     method @Deprecated public java.util.List<String> getSchemeNames();
     method @Deprecated public org.apache.http.conn.scheme.Scheme register(org.apache.http.conn.scheme.Scheme);
-    method @Deprecated public void setItems(java.util.Map<String,org.apache.http.conn.scheme.Scheme>);
+    method @Deprecated public void setItems(java.util.Map<String, org.apache.http.conn.scheme.Scheme>);
     method @Deprecated public org.apache.http.conn.scheme.Scheme unregister(String);
   }
 
@@ -2030,7 +2029,7 @@ package org.apache.http.cookie {
     method @Deprecated public org.apache.http.cookie.CookieSpec getCookieSpec(String, org.apache.http.params.HttpParams) throws IllegalStateException;
     method @Deprecated public java.util.List<String> getSpecNames();
     method @Deprecated public void register(String, org.apache.http.cookie.CookieSpecFactory);
-    method @Deprecated public void setItems(java.util.Map<String,org.apache.http.cookie.CookieSpecFactory>);
+    method @Deprecated public void setItems(java.util.Map<String, org.apache.http.cookie.CookieSpecFactory>);
     method @Deprecated public void unregister(String);
   }
 
@@ -2406,7 +2405,7 @@ package org.apache.http.impl.auth {
   @Deprecated public abstract class RFC2617Scheme extends org.apache.http.impl.auth.AuthSchemeBase {
     ctor @Deprecated public RFC2617Scheme();
     method @Deprecated public String getParameter(String);
-    method @Deprecated protected java.util.Map<String,String> getParameters();
+    method @Deprecated protected java.util.Map<String, String> getParameters();
     method @Deprecated public String getRealm();
     method @Deprecated protected void parseChallenge(org.apache.http.util.CharArrayBuffer, int, int) throws org.apache.http.auth.MalformedChallengeException;
   }
@@ -2424,8 +2423,8 @@ package org.apache.http.impl.client {
   @Deprecated public abstract class AbstractAuthenticationHandler implements org.apache.http.client.AuthenticationHandler {
     ctor @Deprecated public AbstractAuthenticationHandler();
     method @Deprecated protected java.util.List<String> getAuthPreferences();
-    method @Deprecated protected java.util.Map<String,org.apache.http.Header> parseChallenges(org.apache.http.Header[]) throws org.apache.http.auth.MalformedChallengeException;
-    method @Deprecated public org.apache.http.auth.AuthScheme selectScheme(java.util.Map<String,org.apache.http.Header>, org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.auth.AuthenticationException;
+    method @Deprecated protected java.util.Map<String, org.apache.http.Header> parseChallenges(org.apache.http.Header[]) throws org.apache.http.auth.MalformedChallengeException;
+    method @Deprecated public org.apache.http.auth.AuthScheme selectScheme(java.util.Map<String, org.apache.http.Header>, org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.auth.AuthenticationException;
   }
 
   @Deprecated public abstract class AbstractHttpClient implements org.apache.http.client.HttpClient {
@@ -2577,7 +2576,7 @@ package org.apache.http.impl.client {
 
   @Deprecated public class DefaultProxyAuthenticationHandler extends org.apache.http.impl.client.AbstractAuthenticationHandler {
     ctor @Deprecated public DefaultProxyAuthenticationHandler();
-    method @Deprecated public java.util.Map<String,org.apache.http.Header> getChallenges(org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.auth.MalformedChallengeException;
+    method @Deprecated public java.util.Map<String, org.apache.http.Header> getChallenges(org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.auth.MalformedChallengeException;
     method @Deprecated public boolean isAuthenticationRequested(org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext);
   }
 
@@ -2612,7 +2611,7 @@ package org.apache.http.impl.client {
 
   @Deprecated public class DefaultTargetAuthenticationHandler extends org.apache.http.impl.client.AbstractAuthenticationHandler {
     ctor @Deprecated public DefaultTargetAuthenticationHandler();
-    method @Deprecated public java.util.Map<String,org.apache.http.Header> getChallenges(org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.auth.MalformedChallengeException;
+    method @Deprecated public java.util.Map<String, org.apache.http.Header> getChallenges(org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext) throws org.apache.http.auth.MalformedChallengeException;
     method @Deprecated public boolean isAuthenticationRequested(org.apache.http.HttpResponse, org.apache.http.protocol.HttpContext);
   }
 
@@ -2900,7 +2899,7 @@ package org.apache.http.impl.conn.tsccm {
     ctor @Deprecated public ConnPoolByRoute(org.apache.http.conn.ClientConnectionOperator, org.apache.http.params.HttpParams);
     method @Deprecated protected org.apache.http.impl.conn.tsccm.BasicPoolEntry createEntry(org.apache.http.impl.conn.tsccm.RouteSpecificPool, org.apache.http.conn.ClientConnectionOperator);
     method @Deprecated protected java.util.Queue<org.apache.http.impl.conn.tsccm.BasicPoolEntry> createFreeConnQueue();
-    method @Deprecated protected java.util.Map<org.apache.http.conn.routing.HttpRoute,org.apache.http.impl.conn.tsccm.RouteSpecificPool> createRouteToPoolMap();
+    method @Deprecated protected java.util.Map<org.apache.http.conn.routing.HttpRoute, org.apache.http.impl.conn.tsccm.RouteSpecificPool> createRouteToPoolMap();
     method @Deprecated protected java.util.Queue<org.apache.http.impl.conn.tsccm.WaitingThread> createWaitingThreadQueue();
     method @Deprecated public void deleteClosedConnections();
     method @Deprecated protected void deleteEntry(org.apache.http.impl.conn.tsccm.BasicPoolEntry);
@@ -2918,7 +2917,7 @@ package org.apache.http.impl.conn.tsccm {
     field @Deprecated protected java.util.Queue<org.apache.http.impl.conn.tsccm.BasicPoolEntry> freeConnections;
     field @Deprecated protected final int maxTotalConnections;
     field @Deprecated protected final org.apache.http.conn.ClientConnectionOperator operator;
-    field @Deprecated protected final java.util.Map<org.apache.http.conn.routing.HttpRoute,org.apache.http.impl.conn.tsccm.RouteSpecificPool> routeToPool;
+    field @Deprecated protected final java.util.Map<org.apache.http.conn.routing.HttpRoute, org.apache.http.impl.conn.tsccm.RouteSpecificPool> routeToPool;
     field @Deprecated protected java.util.Queue<org.apache.http.impl.conn.tsccm.WaitingThread> waitingThreads;
   }
 
