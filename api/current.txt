@@ -1,6 +1,5 @@
 // Signature format: 6.0
 // - style=java
-// - overloaded-method-order=source
 // - sort-whole-extends-list=no
 // - strip-java-lang-prefix=legacy
 // - type-argument-spacing=legacy
@@ -29,21 +28,21 @@ package android.net.http {
     method public void disableCurlLogging();
     method public void enableCurlLogging(String, int);
     method public org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest) throws java.io.IOException;
-    method public org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.protocol.HttpContext) throws java.io.IOException;
-    method public org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest) throws java.io.IOException;
-    method public org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.protocol.HttpContext) throws java.io.IOException;
     method public <T> T execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.client.ResponseHandler<? extends T>) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method public <T> T execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.client.ResponseHandler<? extends T>, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
+    method public org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.protocol.HttpContext) throws java.io.IOException;
+    method public org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest) throws java.io.IOException;
     method public <T> T execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.client.ResponseHandler<? extends T>) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method public <T> T execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.client.ResponseHandler<? extends T>, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
+    method public org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.protocol.HttpContext) throws java.io.IOException;
     method public static org.apache.http.entity.AbstractHttpEntity getCompressedEntity(byte[], android.content.ContentResolver) throws java.io.IOException;
     method public org.apache.http.conn.ClientConnectionManager getConnectionManager();
     method public static long getMinGzipSize(android.content.ContentResolver);
     method public org.apache.http.params.HttpParams getParams();
     method public static java.io.InputStream getUngzippedContent(org.apache.http.HttpEntity) throws java.io.IOException;
     method public static void modifyRequestToAcceptGzipResponse(org.apache.http.HttpRequest);
-    method public static android.net.http.AndroidHttpClient newInstance(String, android.content.Context);
     method public static android.net.http.AndroidHttpClient newInstance(String);
+    method public static android.net.http.AndroidHttpClient newInstance(String, android.content.Context);
     method public static long parseDate(String);
     field public static long DEFAULT_SYNC_MIN_GZIP_BYTES;
   }
@@ -274,9 +273,9 @@ package android.net.http {
     method public android.net.http.Request getRequest();
     method public android.net.http.Request getRequest(org.apache.http.HttpHost);
     method public boolean haveRequest(org.apache.http.HttpHost);
-    method public android.net.http.RequestHandle queueRequest(String, String, java.util.Map<java.lang.String,java.lang.String>, android.net.http.EventHandler, java.io.InputStream, int);
-    method public android.net.http.RequestHandle queueRequest(String, android.net.compatibility.WebAddress, String, java.util.Map<java.lang.String,java.lang.String>, android.net.http.EventHandler, java.io.InputStream, int);
     method protected void queueRequest(android.net.http.Request, boolean);
+    method public android.net.http.RequestHandle queueRequest(String, android.net.compatibility.WebAddress, String, java.util.Map<java.lang.String,java.lang.String>, android.net.http.EventHandler, java.io.InputStream, int);
+    method public android.net.http.RequestHandle queueRequest(String, String, java.util.Map<java.lang.String,java.lang.String>, android.net.http.EventHandler, java.io.InputStream, int);
     method public android.net.http.RequestHandle queueSynchronousRequest(String, android.net.compatibility.WebAddress, String, java.util.Map<java.lang.String,java.lang.String>, android.net.http.EventHandler, java.io.InputStream, int);
     method public void requeueRequest(android.net.http.Request);
     method public void shutdown();
@@ -296,8 +295,8 @@ package com.android.internal.http.multipart {
   }
 
   public class FilePart extends com.android.internal.http.multipart.PartBase {
-    ctor public FilePart(String, com.android.internal.http.multipart.PartSource, String, String);
     ctor public FilePart(String, com.android.internal.http.multipart.PartSource);
+    ctor public FilePart(String, com.android.internal.http.multipart.PartSource, String, String);
     ctor public FilePart(String, java.io.File) throws java.io.FileNotFoundException;
     ctor public FilePart(String, java.io.File, String, String) throws java.io.FileNotFoundException;
     ctor public FilePart(String, String, java.io.File) throws java.io.FileNotFoundException;
@@ -320,8 +319,8 @@ package com.android.internal.http.multipart {
   }
 
   public class MultipartEntity extends org.apache.http.entity.AbstractHttpEntity {
-    ctor public MultipartEntity(com.android.internal.http.multipart.Part[], org.apache.http.params.HttpParams);
     ctor public MultipartEntity(com.android.internal.http.multipart.Part[]);
+    ctor public MultipartEntity(com.android.internal.http.multipart.Part[], org.apache.http.params.HttpParams);
     method public java.io.InputStream getContent() throws java.io.IOException, java.lang.IllegalStateException;
     method public long getContentLength();
     method public org.apache.http.Header getContentType();
@@ -393,8 +392,8 @@ package com.android.internal.http.multipart {
   }
 
   public class StringPart extends com.android.internal.http.multipart.PartBase {
-    ctor public StringPart(String, String, String);
     ctor public StringPart(String, String);
+    ctor public StringPart(String, String, String);
     method protected long lengthOfData();
     method protected void sendData(java.io.OutputStream) throws java.io.IOException;
     field public static final String DEFAULT_CHARSET = "US-ASCII";
@@ -450,11 +449,11 @@ package org.apache.commons.codec.binary {
 
   @Deprecated public class Base64 implements org.apache.commons.codec.BinaryDecoder org.apache.commons.codec.BinaryEncoder {
     ctor @Deprecated public Base64();
-    method @Deprecated public Object decode(Object) throws org.apache.commons.codec.DecoderException;
     method @Deprecated public byte[] decode(byte[]);
+    method @Deprecated public Object decode(Object) throws org.apache.commons.codec.DecoderException;
     method @Deprecated public static byte[] decodeBase64(byte[]);
-    method @Deprecated public Object encode(Object) throws org.apache.commons.codec.EncoderException;
     method @Deprecated public byte[] encode(byte[]);
+    method @Deprecated public Object encode(Object) throws org.apache.commons.codec.EncoderException;
     method @Deprecated public static byte[] encodeBase64(byte[]);
     method @Deprecated public static byte[] encodeBase64(byte[], boolean);
     method @Deprecated public static byte[] encodeBase64Chunked(byte[]);
@@ -463,12 +462,12 @@ package org.apache.commons.codec.binary {
 
   @Deprecated public class BinaryCodec implements org.apache.commons.codec.BinaryDecoder org.apache.commons.codec.BinaryEncoder {
     ctor @Deprecated public BinaryCodec();
-    method @Deprecated public Object decode(Object) throws org.apache.commons.codec.DecoderException;
     method @Deprecated public byte[] decode(byte[]);
+    method @Deprecated public Object decode(Object) throws org.apache.commons.codec.DecoderException;
     method @Deprecated public byte[] encode(byte[]);
     method @Deprecated public Object encode(Object) throws org.apache.commons.codec.EncoderException;
-    method @Deprecated public static byte[] fromAscii(char[]);
     method @Deprecated public static byte[] fromAscii(byte[]);
+    method @Deprecated public static byte[] fromAscii(char[]);
     method @Deprecated public static byte[] toAsciiBytes(byte[]);
     method @Deprecated public static char[] toAsciiChars(byte[]);
     method @Deprecated public static String toAsciiString(byte[]);
@@ -562,13 +561,13 @@ package org.apache.commons.codec.net {
   @Deprecated public class BCodec implements org.apache.commons.codec.StringDecoder org.apache.commons.codec.StringEncoder {
     ctor @Deprecated public BCodec();
     ctor @Deprecated public BCodec(String);
-    method @Deprecated public String decode(String) throws org.apache.commons.codec.DecoderException;
     method @Deprecated public Object decode(Object) throws org.apache.commons.codec.DecoderException;
+    method @Deprecated public String decode(String) throws org.apache.commons.codec.DecoderException;
     method @Deprecated protected byte[] doDecoding(byte[]) throws org.apache.commons.codec.DecoderException;
     method @Deprecated protected byte[] doEncoding(byte[]) throws org.apache.commons.codec.EncoderException;
-    method @Deprecated public String encode(String, String) throws org.apache.commons.codec.EncoderException;
-    method @Deprecated public String encode(String) throws org.apache.commons.codec.EncoderException;
     method @Deprecated public Object encode(Object) throws org.apache.commons.codec.EncoderException;
+    method @Deprecated public String encode(String) throws org.apache.commons.codec.EncoderException;
+    method @Deprecated public String encode(String, String) throws org.apache.commons.codec.EncoderException;
     method @Deprecated public String getDefaultCharset();
     method @Deprecated protected String getEncoding();
   }
@@ -576,13 +575,13 @@ package org.apache.commons.codec.net {
   @Deprecated public class QCodec implements org.apache.commons.codec.StringDecoder org.apache.commons.codec.StringEncoder {
     ctor @Deprecated public QCodec();
     ctor @Deprecated public QCodec(String);
-    method @Deprecated public String decode(String) throws org.apache.commons.codec.DecoderException;
     method @Deprecated public Object decode(Object) throws org.apache.commons.codec.DecoderException;
+    method @Deprecated public String decode(String) throws org.apache.commons.codec.DecoderException;
     method @Deprecated protected byte[] doDecoding(byte[]) throws org.apache.commons.codec.DecoderException;
     method @Deprecated protected byte[] doEncoding(byte[]) throws org.apache.commons.codec.EncoderException;
-    method @Deprecated public String encode(String, String) throws org.apache.commons.codec.EncoderException;
-    method @Deprecated public String encode(String) throws org.apache.commons.codec.EncoderException;
     method @Deprecated public Object encode(Object) throws org.apache.commons.codec.EncoderException;
+    method @Deprecated public String encode(String) throws org.apache.commons.codec.EncoderException;
+    method @Deprecated public String encode(String, String) throws org.apache.commons.codec.EncoderException;
     method @Deprecated public String getDefaultCharset();
     method @Deprecated protected String getEncoding();
     method @Deprecated public boolean isEncodeBlanks();
@@ -593,13 +592,13 @@ package org.apache.commons.codec.net {
     ctor @Deprecated public QuotedPrintableCodec();
     ctor @Deprecated public QuotedPrintableCodec(String);
     method @Deprecated public byte[] decode(byte[]) throws org.apache.commons.codec.DecoderException;
-    method @Deprecated public String decode(String, String) throws org.apache.commons.codec.DecoderException, java.io.UnsupportedEncodingException;
-    method @Deprecated public String decode(String) throws org.apache.commons.codec.DecoderException;
     method @Deprecated public Object decode(Object) throws org.apache.commons.codec.DecoderException;
+    method @Deprecated public String decode(String) throws org.apache.commons.codec.DecoderException;
+    method @Deprecated public String decode(String, String) throws org.apache.commons.codec.DecoderException, java.io.UnsupportedEncodingException;
     method @Deprecated public static final byte[] decodeQuotedPrintable(byte[]) throws org.apache.commons.codec.DecoderException;
     method @Deprecated public byte[] encode(byte[]);
-    method @Deprecated public String encode(String) throws org.apache.commons.codec.EncoderException;
     method @Deprecated public Object encode(Object) throws org.apache.commons.codec.EncoderException;
+    method @Deprecated public String encode(String) throws org.apache.commons.codec.EncoderException;
     method @Deprecated public String encode(String, String) throws java.io.UnsupportedEncodingException;
     method @Deprecated public static final byte[] encodeQuotedPrintable(java.util.BitSet, byte[]);
     method @Deprecated public String getDefaultCharset();
@@ -609,14 +608,14 @@ package org.apache.commons.codec.net {
     ctor @Deprecated public URLCodec();
     ctor @Deprecated public URLCodec(String);
     method @Deprecated public byte[] decode(byte[]) throws org.apache.commons.codec.DecoderException;
-    method @Deprecated public String decode(String, String) throws org.apache.commons.codec.DecoderException, java.io.UnsupportedEncodingException;
-    method @Deprecated public String decode(String) throws org.apache.commons.codec.DecoderException;
     method @Deprecated public Object decode(Object) throws org.apache.commons.codec.DecoderException;
+    method @Deprecated public String decode(String) throws org.apache.commons.codec.DecoderException;
+    method @Deprecated public String decode(String, String) throws org.apache.commons.codec.DecoderException, java.io.UnsupportedEncodingException;
     method @Deprecated public static final byte[] decodeUrl(byte[]) throws org.apache.commons.codec.DecoderException;
     method @Deprecated public byte[] encode(byte[]);
-    method @Deprecated public String encode(String, String) throws java.io.UnsupportedEncodingException;
-    method @Deprecated public String encode(String) throws org.apache.commons.codec.EncoderException;
     method @Deprecated public Object encode(Object) throws org.apache.commons.codec.EncoderException;
+    method @Deprecated public String encode(String) throws org.apache.commons.codec.EncoderException;
+    method @Deprecated public String encode(String, String) throws java.io.UnsupportedEncodingException;
     method @Deprecated public static final byte[] encodeUrl(java.util.BitSet, byte[]);
     method @Deprecated public String getDefaultCharset();
     method @Deprecated public String getEncoding();
@@ -653,8 +652,8 @@ package org.apache.commons.logging {
   @Deprecated public class LogConfigurationException extends java.lang.RuntimeException {
     ctor @Deprecated public LogConfigurationException();
     ctor @Deprecated public LogConfigurationException(String);
-    ctor @Deprecated public LogConfigurationException(Throwable);
     ctor @Deprecated public LogConfigurationException(String, Throwable);
+    ctor @Deprecated public LogConfigurationException(Throwable);
     field @Deprecated protected Throwable cause;
   }
 
@@ -673,8 +672,8 @@ package org.apache.commons.logging {
     method @Deprecated public static org.apache.commons.logging.Log getLog(String) throws org.apache.commons.logging.LogConfigurationException;
     method @Deprecated protected static boolean isDiagnosticsEnabled();
     method @Deprecated protected static final void logRawDiagnostic(String);
-    method @Deprecated protected static org.apache.commons.logging.LogFactory newFactory(String, ClassLoader, ClassLoader) throws org.apache.commons.logging.LogConfigurationException;
     method @Deprecated protected static org.apache.commons.logging.LogFactory newFactory(String, ClassLoader);
+    method @Deprecated protected static org.apache.commons.logging.LogFactory newFactory(String, ClassLoader, ClassLoader) throws org.apache.commons.logging.LogConfigurationException;
     method @Deprecated public static String objectId(Object);
     method @Deprecated public abstract void release();
     method @Deprecated public static void release(ClassLoader);
@@ -694,12 +693,12 @@ package org.apache.commons.logging {
   }
 
   @Deprecated public class LogSource {
-    method @Deprecated public static org.apache.commons.logging.Log getInstance(String);
     method @Deprecated public static org.apache.commons.logging.Log getInstance(Class);
+    method @Deprecated public static org.apache.commons.logging.Log getInstance(String);
     method @Deprecated public static String[] getLogNames();
     method @Deprecated public static org.apache.commons.logging.Log makeNewLogInstance(String);
-    method @Deprecated public static void setLogImplementation(String) throws java.lang.ClassNotFoundException, java.lang.ExceptionInInitializerError, java.lang.LinkageError, java.lang.NoSuchMethodException, java.lang.SecurityException;
     method @Deprecated public static void setLogImplementation(Class) throws java.lang.ExceptionInInitializerError, java.lang.LinkageError, java.lang.NoSuchMethodException, java.lang.SecurityException;
+    method @Deprecated public static void setLogImplementation(String) throws java.lang.ClassNotFoundException, java.lang.ExceptionInInitializerError, java.lang.LinkageError, java.lang.NoSuchMethodException, java.lang.SecurityException;
     field @Deprecated protected static boolean jdk14IsAvailable;
     field @Deprecated protected static boolean log4jIsAvailable;
     field @Deprecated protected static java.lang.reflect.Constructor logImplctor;
@@ -942,9 +941,9 @@ package org.apache.http {
   }
 
   @Deprecated public final class HttpHost implements java.lang.Cloneable {
-    ctor @Deprecated public HttpHost(String, int, String);
-    ctor @Deprecated public HttpHost(String, int);
     ctor @Deprecated public HttpHost(String);
+    ctor @Deprecated public HttpHost(String, int);
+    ctor @Deprecated public HttpHost(String, int, String);
     ctor @Deprecated public HttpHost(org.apache.http.HttpHost);
     method @Deprecated public Object clone() throws java.lang.CloneNotSupportedException;
     method @Deprecated public String getHostName();
@@ -967,8 +966,8 @@ package org.apache.http {
   }
 
   @Deprecated public interface HttpMessage {
-    method @Deprecated public void addHeader(org.apache.http.Header);
     method @Deprecated public void addHeader(String, String);
+    method @Deprecated public void addHeader(org.apache.http.Header);
     method @Deprecated public boolean containsHeader(String);
     method @Deprecated public org.apache.http.Header[] getAllHeaders();
     method @Deprecated public org.apache.http.Header getFirstHeader(String);
@@ -980,8 +979,8 @@ package org.apache.http {
     method @Deprecated public org.apache.http.HeaderIterator headerIterator(String);
     method @Deprecated public void removeHeader(org.apache.http.Header);
     method @Deprecated public void removeHeaders(String);
-    method @Deprecated public void setHeader(org.apache.http.Header);
     method @Deprecated public void setHeader(String, String);
+    method @Deprecated public void setHeader(org.apache.http.Header);
     method @Deprecated public void setHeaders(org.apache.http.Header[]);
     method @Deprecated public void setParams(org.apache.http.params.HttpParams);
   }
@@ -991,8 +990,8 @@ package org.apache.http {
   }
 
   @Deprecated public interface HttpRequestFactory {
-    method @Deprecated public org.apache.http.HttpRequest newHttpRequest(org.apache.http.RequestLine) throws org.apache.http.MethodNotSupportedException;
     method @Deprecated public org.apache.http.HttpRequest newHttpRequest(String, String) throws org.apache.http.MethodNotSupportedException;
+    method @Deprecated public org.apache.http.HttpRequest newHttpRequest(org.apache.http.RequestLine) throws org.apache.http.MethodNotSupportedException;
   }
 
   @Deprecated public interface HttpRequestInterceptor {
@@ -1007,9 +1006,9 @@ package org.apache.http {
     method @Deprecated public void setLocale(java.util.Locale);
     method @Deprecated public void setReasonPhrase(String) throws java.lang.IllegalStateException;
     method @Deprecated public void setStatusCode(int) throws java.lang.IllegalStateException;
-    method @Deprecated public void setStatusLine(org.apache.http.StatusLine);
     method @Deprecated public void setStatusLine(org.apache.http.ProtocolVersion, int);
     method @Deprecated public void setStatusLine(org.apache.http.ProtocolVersion, int, String);
+    method @Deprecated public void setStatusLine(org.apache.http.StatusLine);
   }
 
   @Deprecated public interface HttpResponseFactory {
@@ -1196,9 +1195,9 @@ package org.apache.http.auth {
   }
 
   @Deprecated public class AuthScope {
-    ctor @Deprecated public AuthScope(String, int, String, String);
-    ctor @Deprecated public AuthScope(String, int, String);
     ctor @Deprecated public AuthScope(String, int);
+    ctor @Deprecated public AuthScope(String, int, String);
+    ctor @Deprecated public AuthScope(String, int, String, String);
     ctor @Deprecated public AuthScope(org.apache.http.auth.AuthScope);
     method @Deprecated public String getHost();
     method @Deprecated public int getPort();
@@ -1320,8 +1319,8 @@ package org.apache.http.client {
   @Deprecated public class ClientProtocolException extends java.io.IOException {
     ctor @Deprecated public ClientProtocolException();
     ctor @Deprecated public ClientProtocolException(String);
-    ctor @Deprecated public ClientProtocolException(Throwable);
     ctor @Deprecated public ClientProtocolException(String, Throwable);
+    ctor @Deprecated public ClientProtocolException(Throwable);
   }
 
   @Deprecated public interface CookieStore {
@@ -1339,13 +1338,13 @@ package org.apache.http.client {
 
   @Deprecated public interface HttpClient {
     method @Deprecated public org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
-    method @Deprecated public org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
-    method @Deprecated public org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
-    method @Deprecated public org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method @Deprecated public <T> T execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.client.ResponseHandler<? extends T>) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method @Deprecated public <T> T execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.client.ResponseHandler<? extends T>, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
+    method @Deprecated public org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
+    method @Deprecated public org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method @Deprecated public <T> T execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.client.ResponseHandler<? extends T>) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method @Deprecated public <T> T execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.client.ResponseHandler<? extends T>, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
+    method @Deprecated public org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method @Deprecated public org.apache.http.conn.ClientConnectionManager getConnectionManager();
     method @Deprecated public org.apache.http.params.HttpParams getParams();
   }
@@ -1392,8 +1391,8 @@ package org.apache.http.client {
 package org.apache.http.client.entity {
 
   @Deprecated public class UrlEncodedFormEntity extends org.apache.http.entity.StringEntity {
-    ctor @Deprecated public UrlEncodedFormEntity(java.util.List<? extends org.apache.http.NameValuePair>, String) throws java.io.UnsupportedEncodingException;
     ctor @Deprecated public UrlEncodedFormEntity(java.util.List<? extends org.apache.http.NameValuePair>) throws java.io.UnsupportedEncodingException;
+    ctor @Deprecated public UrlEncodedFormEntity(java.util.List<? extends org.apache.http.NameValuePair>, String) throws java.io.UnsupportedEncodingException;
   }
 
 }
@@ -1408,8 +1407,8 @@ package org.apache.http.client.methods {
 
   @Deprecated public class HttpDelete extends org.apache.http.client.methods.HttpRequestBase {
     ctor @Deprecated public HttpDelete();
-    ctor @Deprecated public HttpDelete(java.net.URI);
     ctor @Deprecated public HttpDelete(String);
+    ctor @Deprecated public HttpDelete(java.net.URI);
     method @Deprecated public String getMethod();
     field @Deprecated public static final String METHOD_NAME = "DELETE";
   }
@@ -1423,24 +1422,24 @@ package org.apache.http.client.methods {
 
   @Deprecated public class HttpGet extends org.apache.http.client.methods.HttpRequestBase {
     ctor @Deprecated public HttpGet();
-    ctor @Deprecated public HttpGet(java.net.URI);
     ctor @Deprecated public HttpGet(String);
+    ctor @Deprecated public HttpGet(java.net.URI);
     method @Deprecated public String getMethod();
     field @Deprecated public static final String METHOD_NAME = "GET";
   }
 
   @Deprecated public class HttpHead extends org.apache.http.client.methods.HttpRequestBase {
     ctor @Deprecated public HttpHead();
-    ctor @Deprecated public HttpHead(java.net.URI);
     ctor @Deprecated public HttpHead(String);
+    ctor @Deprecated public HttpHead(java.net.URI);
     method @Deprecated public String getMethod();
     field @Deprecated public static final String METHOD_NAME = "HEAD";
   }
 
   @Deprecated public class HttpOptions extends org.apache.http.client.methods.HttpRequestBase {
     ctor @Deprecated public HttpOptions();
-    ctor @Deprecated public HttpOptions(java.net.URI);
     ctor @Deprecated public HttpOptions(String);
+    ctor @Deprecated public HttpOptions(java.net.URI);
     method @Deprecated public java.util.Set<java.lang.String> getAllowedMethods(org.apache.http.HttpResponse);
     method @Deprecated public String getMethod();
     field @Deprecated public static final String METHOD_NAME = "OPTIONS";
@@ -1448,16 +1447,16 @@ package org.apache.http.client.methods {
 
   @Deprecated public class HttpPost extends org.apache.http.client.methods.HttpEntityEnclosingRequestBase {
     ctor @Deprecated public HttpPost();
-    ctor @Deprecated public HttpPost(java.net.URI);
     ctor @Deprecated public HttpPost(String);
+    ctor @Deprecated public HttpPost(java.net.URI);
     method @Deprecated public String getMethod();
     field @Deprecated public static final String METHOD_NAME = "POST";
   }
 
   @Deprecated public class HttpPut extends org.apache.http.client.methods.HttpEntityEnclosingRequestBase {
     ctor @Deprecated public HttpPut();
-    ctor @Deprecated public HttpPut(java.net.URI);
     ctor @Deprecated public HttpPut(String);
+    ctor @Deprecated public HttpPut(java.net.URI);
     method @Deprecated public String getMethod();
     field @Deprecated public static final String METHOD_NAME = "PUT";
   }
@@ -1477,8 +1476,8 @@ package org.apache.http.client.methods {
 
   @Deprecated public class HttpTrace extends org.apache.http.client.methods.HttpRequestBase {
     ctor @Deprecated public HttpTrace();
-    ctor @Deprecated public HttpTrace(java.net.URI);
     ctor @Deprecated public HttpTrace(String);
+    ctor @Deprecated public HttpTrace(java.net.URI);
     method @Deprecated public String getMethod();
     field @Deprecated public static final String METHOD_NAME = "TRACE";
   }
@@ -1612,8 +1611,8 @@ package org.apache.http.client.utils {
     method @Deprecated public static java.net.URI createURI(String, String, int, String, String, String) throws java.net.URISyntaxException;
     method @Deprecated public static java.net.URI resolve(java.net.URI, String);
     method @Deprecated public static java.net.URI resolve(java.net.URI, java.net.URI);
-    method @Deprecated public static java.net.URI rewriteURI(java.net.URI, org.apache.http.HttpHost, boolean) throws java.net.URISyntaxException;
     method @Deprecated public static java.net.URI rewriteURI(java.net.URI, org.apache.http.HttpHost) throws java.net.URISyntaxException;
+    method @Deprecated public static java.net.URI rewriteURI(java.net.URI, org.apache.http.HttpHost, boolean) throws java.net.URISyntaxException;
   }
 
   @Deprecated public class URLEncodedUtils {
@@ -1621,8 +1620,8 @@ package org.apache.http.client.utils {
     method @Deprecated public static String format(java.util.List<? extends org.apache.http.NameValuePair>, String);
     method @Deprecated public static boolean isEncoded(org.apache.http.HttpEntity);
     method @Deprecated public static java.util.List<org.apache.http.NameValuePair> parse(java.net.URI, String);
-    method @Deprecated public static java.util.List<org.apache.http.NameValuePair> parse(org.apache.http.HttpEntity) throws java.io.IOException;
     method @Deprecated public static void parse(java.util.List<org.apache.http.NameValuePair>, java.util.Scanner, String);
+    method @Deprecated public static java.util.List<org.apache.http.NameValuePair> parse(org.apache.http.HttpEntity) throws java.io.IOException;
     field @Deprecated public static final String CONTENT_TYPE = "application/x-www-form-urlencoded";
   }
 
@@ -1786,8 +1785,8 @@ package org.apache.http.conn.params {
   }
 
   @Deprecated public final class ConnPerRouteBean implements org.apache.http.conn.params.ConnPerRoute {
-    ctor @Deprecated public ConnPerRouteBean(int);
     ctor @Deprecated public ConnPerRouteBean();
+    ctor @Deprecated public ConnPerRouteBean(int);
     method @Deprecated public int getDefaultMax();
     method @Deprecated public int getMaxForRoute(org.apache.http.conn.routing.HttpRoute);
     method @Deprecated public void setDefaultMaxPerRoute(int);
@@ -1833,11 +1832,11 @@ package org.apache.http.conn.routing {
   }
 
   @Deprecated public final class HttpRoute implements java.lang.Cloneable org.apache.http.conn.routing.RouteInfo {
-    ctor @Deprecated public HttpRoute(org.apache.http.HttpHost, java.net.InetAddress, org.apache.http.HttpHost[], boolean, org.apache.http.conn.routing.RouteInfo.TunnelType, org.apache.http.conn.routing.RouteInfo.LayerType);
-    ctor @Deprecated public HttpRoute(org.apache.http.HttpHost, java.net.InetAddress, org.apache.http.HttpHost, boolean, org.apache.http.conn.routing.RouteInfo.TunnelType, org.apache.http.conn.routing.RouteInfo.LayerType);
-    ctor @Deprecated public HttpRoute(org.apache.http.HttpHost, java.net.InetAddress, boolean);
     ctor @Deprecated public HttpRoute(org.apache.http.HttpHost);
+    ctor @Deprecated public HttpRoute(org.apache.http.HttpHost, java.net.InetAddress, boolean);
     ctor @Deprecated public HttpRoute(org.apache.http.HttpHost, java.net.InetAddress, org.apache.http.HttpHost, boolean);
+    ctor @Deprecated public HttpRoute(org.apache.http.HttpHost, java.net.InetAddress, org.apache.http.HttpHost, boolean, org.apache.http.conn.routing.RouteInfo.TunnelType, org.apache.http.conn.routing.RouteInfo.LayerType);
+    ctor @Deprecated public HttpRoute(org.apache.http.HttpHost, java.net.InetAddress, org.apache.http.HttpHost[], boolean, org.apache.http.conn.routing.RouteInfo.TunnelType, org.apache.http.conn.routing.RouteInfo.LayerType);
     method @Deprecated public Object clone() throws java.lang.CloneNotSupportedException;
     method @Deprecated public int getHopCount();
     method @Deprecated public org.apache.http.HttpHost getHopTarget(int);
@@ -1890,8 +1889,8 @@ package org.apache.http.conn.routing {
   }
 
   @Deprecated public final class RouteTracker implements java.lang.Cloneable org.apache.http.conn.routing.RouteInfo {
-    ctor @Deprecated public RouteTracker(org.apache.http.HttpHost, java.net.InetAddress);
     ctor @Deprecated public RouteTracker(org.apache.http.conn.routing.HttpRoute);
+    ctor @Deprecated public RouteTracker(org.apache.http.HttpHost, java.net.InetAddress);
     method @Deprecated public Object clone() throws java.lang.CloneNotSupportedException;
     method @Deprecated public void connectProxy(org.apache.http.HttpHost, boolean);
     method @Deprecated public void connectTarget(boolean);
@@ -1917,8 +1916,8 @@ package org.apache.http.conn.routing {
 package org.apache.http.conn.scheme {
 
   @Deprecated public final class PlainSocketFactory implements org.apache.http.conn.scheme.SocketFactory {
-    ctor @Deprecated public PlainSocketFactory(org.apache.http.conn.scheme.HostNameResolver);
     ctor @Deprecated public PlainSocketFactory();
+    ctor @Deprecated public PlainSocketFactory(org.apache.http.conn.scheme.HostNameResolver);
     method @Deprecated public java.net.Socket connectSocket(java.net.Socket, String, int, java.net.InetAddress, int, org.apache.http.params.HttpParams) throws java.io.IOException;
     method @Deprecated public java.net.Socket createSocket();
     method @Deprecated public static org.apache.http.conn.scheme.PlainSocketFactory getSocketFactory();
@@ -2029,8 +2028,8 @@ package org.apache.http.cookie {
 
   @Deprecated public final class CookieSpecRegistry {
     ctor @Deprecated public CookieSpecRegistry();
-    method @Deprecated public org.apache.http.cookie.CookieSpec getCookieSpec(String, org.apache.http.params.HttpParams) throws java.lang.IllegalStateException;
     method @Deprecated public org.apache.http.cookie.CookieSpec getCookieSpec(String) throws java.lang.IllegalStateException;
+    method @Deprecated public org.apache.http.cookie.CookieSpec getCookieSpec(String, org.apache.http.params.HttpParams) throws java.lang.IllegalStateException;
     method @Deprecated public java.util.List<java.lang.String> getSpecNames();
     method @Deprecated public void register(String, org.apache.http.cookie.CookieSpecFactory);
     method @Deprecated public void setItems(java.util.Map<java.lang.String,org.apache.http.cookie.CookieSpecFactory>);
@@ -2092,10 +2091,10 @@ package org.apache.http.entity {
     method @Deprecated public org.apache.http.Header getContentType();
     method @Deprecated public boolean isChunked();
     method @Deprecated public void setChunked(boolean);
-    method @Deprecated public void setContentEncoding(org.apache.http.Header);
     method @Deprecated public void setContentEncoding(String);
-    method @Deprecated public void setContentType(org.apache.http.Header);
+    method @Deprecated public void setContentEncoding(org.apache.http.Header);
     method @Deprecated public void setContentType(String);
+    method @Deprecated public void setContentType(org.apache.http.Header);
     field @Deprecated protected boolean chunked;
     field @Deprecated protected org.apache.http.Header contentEncoding;
     field @Deprecated protected org.apache.http.Header contentType;
@@ -2193,8 +2192,8 @@ package org.apache.http.entity {
   }
 
   @Deprecated public class StringEntity extends org.apache.http.entity.AbstractHttpEntity implements java.lang.Cloneable {
-    ctor @Deprecated public StringEntity(String, String) throws java.io.UnsupportedEncodingException;
     ctor @Deprecated public StringEntity(String) throws java.io.UnsupportedEncodingException;
+    ctor @Deprecated public StringEntity(String, String) throws java.io.UnsupportedEncodingException;
     method @Deprecated public Object clone() throws java.lang.CloneNotSupportedException;
     method @Deprecated public java.io.InputStream getContent() throws java.io.IOException;
     method @Deprecated public long getContentLength();
@@ -2260,13 +2259,13 @@ package org.apache.http.impl {
 
   @Deprecated public class DefaultHttpRequestFactory implements org.apache.http.HttpRequestFactory {
     ctor @Deprecated public DefaultHttpRequestFactory();
-    method @Deprecated public org.apache.http.HttpRequest newHttpRequest(org.apache.http.RequestLine) throws org.apache.http.MethodNotSupportedException;
     method @Deprecated public org.apache.http.HttpRequest newHttpRequest(String, String) throws org.apache.http.MethodNotSupportedException;
+    method @Deprecated public org.apache.http.HttpRequest newHttpRequest(org.apache.http.RequestLine) throws org.apache.http.MethodNotSupportedException;
   }
 
   @Deprecated public class DefaultHttpResponseFactory implements org.apache.http.HttpResponseFactory {
-    ctor @Deprecated public DefaultHttpResponseFactory(org.apache.http.ReasonPhraseCatalog);
     ctor @Deprecated public DefaultHttpResponseFactory();
+    ctor @Deprecated public DefaultHttpResponseFactory(org.apache.http.ReasonPhraseCatalog);
     method @Deprecated protected java.util.Locale determineLocale(org.apache.http.protocol.HttpContext);
     method @Deprecated public org.apache.http.HttpResponse newHttpResponse(org.apache.http.ProtocolVersion, int, org.apache.http.protocol.HttpContext);
     method @Deprecated public org.apache.http.HttpResponse newHttpResponse(org.apache.http.StatusLine, org.apache.http.protocol.HttpContext);
@@ -2357,8 +2356,8 @@ package org.apache.http.impl.auth {
 
   @Deprecated public class BasicScheme extends org.apache.http.impl.auth.RFC2617Scheme {
     ctor @Deprecated public BasicScheme();
-    method @Deprecated public org.apache.http.Header authenticate(org.apache.http.auth.Credentials, org.apache.http.HttpRequest) throws org.apache.http.auth.AuthenticationException;
     method @Deprecated public static org.apache.http.Header authenticate(org.apache.http.auth.Credentials, String, boolean);
+    method @Deprecated public org.apache.http.Header authenticate(org.apache.http.auth.Credentials, org.apache.http.HttpRequest) throws org.apache.http.auth.AuthenticationException;
     method @Deprecated public String getSchemeName();
     method @Deprecated public boolean isComplete();
     method @Deprecated public boolean isConnectionBased();
@@ -2459,13 +2458,13 @@ package org.apache.http.impl.client {
     method @Deprecated protected abstract org.apache.http.client.UserTokenHandler createUserTokenHandler();
     method @Deprecated protected org.apache.http.params.HttpParams determineParams(org.apache.http.HttpRequest);
     method @Deprecated public final org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
-    method @Deprecated public final org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
-    method @Deprecated public final org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
-    method @Deprecated public final org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method @Deprecated public <T> T execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.client.ResponseHandler<? extends T>) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method @Deprecated public <T> T execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.client.ResponseHandler<? extends T>, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
+    method @Deprecated public final org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
+    method @Deprecated public final org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method @Deprecated public <T> T execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.client.ResponseHandler<? extends T>) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method @Deprecated public <T> T execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.client.ResponseHandler<? extends T>, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
+    method @Deprecated public final org.apache.http.HttpResponse execute(org.apache.http.HttpHost, org.apache.http.HttpRequest, org.apache.http.protocol.HttpContext) throws org.apache.http.client.ClientProtocolException, java.io.IOException;
     method @Deprecated public final org.apache.http.auth.AuthSchemeRegistry getAuthSchemes();
     method @Deprecated public final org.apache.http.conn.ConnectionKeepAliveStrategy getConnectionKeepAliveStrategy();
     method @Deprecated public final org.apache.http.conn.ClientConnectionManager getConnectionManager();
@@ -2525,9 +2524,9 @@ package org.apache.http.impl.client {
   }
 
   @Deprecated public class ClientParamsStack extends org.apache.http.params.AbstractHttpParams {
-    ctor @Deprecated public ClientParamsStack(org.apache.http.params.HttpParams, org.apache.http.params.HttpParams, org.apache.http.params.HttpParams, org.apache.http.params.HttpParams);
     ctor @Deprecated public ClientParamsStack(org.apache.http.impl.client.ClientParamsStack);
     ctor @Deprecated public ClientParamsStack(org.apache.http.impl.client.ClientParamsStack, org.apache.http.params.HttpParams, org.apache.http.params.HttpParams, org.apache.http.params.HttpParams, org.apache.http.params.HttpParams);
+    ctor @Deprecated public ClientParamsStack(org.apache.http.params.HttpParams, org.apache.http.params.HttpParams, org.apache.http.params.HttpParams, org.apache.http.params.HttpParams);
     method @Deprecated public org.apache.http.params.HttpParams copy();
     method @Deprecated public final org.apache.http.params.HttpParams getApplicationParams();
     method @Deprecated public final org.apache.http.params.HttpParams getClientParams();
@@ -2548,9 +2547,9 @@ package org.apache.http.impl.client {
   }
 
   @Deprecated public class DefaultHttpClient extends org.apache.http.impl.client.AbstractHttpClient {
+    ctor @Deprecated public DefaultHttpClient();
     ctor @Deprecated public DefaultHttpClient(org.apache.http.conn.ClientConnectionManager, org.apache.http.params.HttpParams);
     ctor @Deprecated public DefaultHttpClient(org.apache.http.params.HttpParams);
-    ctor @Deprecated public DefaultHttpClient();
     method @Deprecated protected org.apache.http.auth.AuthSchemeRegistry createAuthSchemeRegistry();
     method @Deprecated protected org.apache.http.conn.ClientConnectionManager createClientConnectionManager();
     method @Deprecated protected org.apache.http.conn.ConnectionKeepAliveStrategy createConnectionKeepAliveStrategy();
@@ -2571,8 +2570,8 @@ package org.apache.http.impl.client {
   }
 
   @Deprecated public class DefaultHttpRequestRetryHandler implements org.apache.http.client.HttpRequestRetryHandler {
-    ctor @Deprecated public DefaultHttpRequestRetryHandler(int, boolean);
     ctor @Deprecated public DefaultHttpRequestRetryHandler();
+    ctor @Deprecated public DefaultHttpRequestRetryHandler(int, boolean);
     method @Deprecated public int getRetryCount();
     method @Deprecated public boolean isRequestSentRetryEnabled();
     method @Deprecated public boolean retryRequest(java.io.IOException, int, org.apache.http.protocol.HttpContext);
@@ -2779,9 +2778,9 @@ package org.apache.http.impl.conn {
     ctor @Deprecated public LoggingSessionInputBuffer(org.apache.http.io.SessionInputBuffer, org.apache.http.impl.conn.Wire);
     method @Deprecated public org.apache.http.io.HttpTransportMetrics getMetrics();
     method @Deprecated public boolean isDataAvailable(int) throws java.io.IOException;
-    method @Deprecated public int read(byte[], int, int) throws java.io.IOException;
     method @Deprecated public int read() throws java.io.IOException;
     method @Deprecated public int read(byte[]) throws java.io.IOException;
+    method @Deprecated public int read(byte[], int, int) throws java.io.IOException;
     method @Deprecated public String readLine() throws java.io.IOException;
     method @Deprecated public int readLine(org.apache.http.util.CharArrayBuffer) throws java.io.IOException;
   }
@@ -2790,11 +2789,11 @@ package org.apache.http.impl.conn {
     ctor @Deprecated public LoggingSessionOutputBuffer(org.apache.http.io.SessionOutputBuffer, org.apache.http.impl.conn.Wire);
     method @Deprecated public void flush() throws java.io.IOException;
     method @Deprecated public org.apache.http.io.HttpTransportMetrics getMetrics();
+    method @Deprecated public void write(byte[]) throws java.io.IOException;
     method @Deprecated public void write(byte[], int, int) throws java.io.IOException;
     method @Deprecated public void write(int) throws java.io.IOException;
-    method @Deprecated public void write(byte[]) throws java.io.IOException;
-    method @Deprecated public void writeLine(org.apache.http.util.CharArrayBuffer) throws java.io.IOException;
     method @Deprecated public void writeLine(String) throws java.io.IOException;
+    method @Deprecated public void writeLine(org.apache.http.util.CharArrayBuffer) throws java.io.IOException;
   }
 
   @Deprecated public class ProxySelectorRoutePlanner implements org.apache.http.conn.routing.HttpRoutePlanner {
@@ -2845,15 +2844,15 @@ package org.apache.http.impl.conn {
   @Deprecated public class Wire {
     ctor @Deprecated public Wire(org.apache.commons.logging.Log);
     method @Deprecated public boolean enabled();
-    method @Deprecated public void input(java.io.InputStream) throws java.io.IOException;
-    method @Deprecated public void input(byte[], int, int) throws java.io.IOException;
     method @Deprecated public void input(byte[]) throws java.io.IOException;
+    method @Deprecated public void input(byte[], int, int) throws java.io.IOException;
     method @Deprecated public void input(int) throws java.io.IOException;
+    method @Deprecated public void input(java.io.InputStream) throws java.io.IOException;
     method @Deprecated public void input(String) throws java.io.IOException;
-    method @Deprecated public void output(java.io.InputStream) throws java.io.IOException;
-    method @Deprecated public void output(byte[], int, int) throws java.io.IOException;
     method @Deprecated public void output(byte[]) throws java.io.IOException;
+    method @Deprecated public void output(byte[], int, int) throws java.io.IOException;
     method @Deprecated public void output(int) throws java.io.IOException;
+    method @Deprecated public void output(java.io.InputStream) throws java.io.IOException;
     method @Deprecated public void output(String) throws java.io.IOException;
   }
 
@@ -2972,8 +2971,8 @@ package org.apache.http.impl.conn.tsccm {
     method @Deprecated public void closeIdleConnections(long, java.util.concurrent.TimeUnit);
     method @Deprecated protected org.apache.http.conn.ClientConnectionOperator createConnectionOperator(org.apache.http.conn.scheme.SchemeRegistry);
     method @Deprecated protected org.apache.http.impl.conn.tsccm.AbstractConnPool createConnectionPool(org.apache.http.params.HttpParams);
-    method @Deprecated public int getConnectionsInPool(org.apache.http.conn.routing.HttpRoute);
     method @Deprecated public int getConnectionsInPool();
+    method @Deprecated public int getConnectionsInPool(org.apache.http.conn.routing.HttpRoute);
     method @Deprecated public org.apache.http.conn.scheme.SchemeRegistry getSchemeRegistry();
     method @Deprecated public void releaseConnection(org.apache.http.conn.ManagedClientConnection, long, java.util.concurrent.TimeUnit);
     method @Deprecated public org.apache.http.conn.ClientConnectionRequest requestConnection(org.apache.http.conn.routing.HttpRoute, Object);
@@ -3086,8 +3085,8 @@ package org.apache.http.impl.cookie {
   }
 
   @Deprecated public class BestMatchSpec implements org.apache.http.cookie.CookieSpec {
-    ctor @Deprecated public BestMatchSpec(String[], boolean);
     ctor @Deprecated public BestMatchSpec();
+    ctor @Deprecated public BestMatchSpec(String[], boolean);
     method @Deprecated public java.util.List<org.apache.http.Header> formatCookies(java.util.List<org.apache.http.cookie.Cookie>);
     method @Deprecated public int getVersion();
     method @Deprecated public org.apache.http.Header getVersionHeader();
@@ -3102,8 +3101,8 @@ package org.apache.http.impl.cookie {
   }
 
   @Deprecated public class BrowserCompatSpec extends org.apache.http.impl.cookie.CookieSpecBase {
-    ctor @Deprecated public BrowserCompatSpec(String[]);
     ctor @Deprecated public BrowserCompatSpec();
+    ctor @Deprecated public BrowserCompatSpec(String[]);
     method @Deprecated public java.util.List<org.apache.http.Header> formatCookies(java.util.List<org.apache.http.cookie.Cookie>);
     method @Deprecated public int getVersion();
     method @Deprecated public org.apache.http.Header getVersionHeader();
@@ -3153,8 +3152,8 @@ package org.apache.http.impl.cookie {
   }
 
   @Deprecated public class NetscapeDraftSpec extends org.apache.http.impl.cookie.CookieSpecBase {
-    ctor @Deprecated public NetscapeDraftSpec(String[]);
     ctor @Deprecated public NetscapeDraftSpec();
+    ctor @Deprecated public NetscapeDraftSpec(String[]);
     method @Deprecated public java.util.List<org.apache.http.Header> formatCookies(java.util.List<org.apache.http.cookie.Cookie>);
     method @Deprecated public int getVersion();
     method @Deprecated public org.apache.http.Header getVersionHeader();
@@ -3175,8 +3174,8 @@ package org.apache.http.impl.cookie {
   }
 
   @Deprecated public class RFC2109Spec extends org.apache.http.impl.cookie.CookieSpecBase {
-    ctor @Deprecated public RFC2109Spec(String[], boolean);
     ctor @Deprecated public RFC2109Spec();
+    ctor @Deprecated public RFC2109Spec(String[], boolean);
     method @Deprecated protected void formatCookieAsVer(org.apache.http.util.CharArrayBuffer, org.apache.http.cookie.Cookie, int);
     method @Deprecated public java.util.List<org.apache.http.Header> formatCookies(java.util.List<org.apache.http.cookie.Cookie>);
     method @Deprecated protected void formatParamAsVer(org.apache.http.util.CharArrayBuffer, String, String, int);
@@ -3295,10 +3294,10 @@ package org.apache.http.impl.io {
     method @Deprecated protected boolean hasBufferedData();
     method @Deprecated protected void init(java.io.InputStream, int, org.apache.http.params.HttpParams);
     method @Deprecated public int read() throws java.io.IOException;
-    method @Deprecated public int read(byte[], int, int) throws java.io.IOException;
     method @Deprecated public int read(byte[]) throws java.io.IOException;
-    method @Deprecated public int readLine(org.apache.http.util.CharArrayBuffer) throws java.io.IOException;
+    method @Deprecated public int read(byte[], int, int) throws java.io.IOException;
     method @Deprecated public String readLine() throws java.io.IOException;
+    method @Deprecated public int readLine(org.apache.http.util.CharArrayBuffer) throws java.io.IOException;
   }
 
   @Deprecated public abstract class AbstractSessionOutputBuffer implements org.apache.http.io.SessionOutputBuffer {
@@ -3307,8 +3306,8 @@ package org.apache.http.impl.io {
     method @Deprecated protected void flushBuffer() throws java.io.IOException;
     method @Deprecated public org.apache.http.io.HttpTransportMetrics getMetrics();
     method @Deprecated protected void init(java.io.OutputStream, int, org.apache.http.params.HttpParams);
-    method @Deprecated public void write(byte[], int, int) throws java.io.IOException;
     method @Deprecated public void write(byte[]) throws java.io.IOException;
+    method @Deprecated public void write(byte[], int, int) throws java.io.IOException;
     method @Deprecated public void write(int) throws java.io.IOException;
     method @Deprecated public void writeLine(String) throws java.io.IOException;
     method @Deprecated public void writeLine(org.apache.http.util.CharArrayBuffer) throws java.io.IOException;
@@ -3321,8 +3320,8 @@ package org.apache.http.impl.io {
   }
 
   @Deprecated public class ChunkedOutputStream extends java.io.OutputStream {
-    ctor @Deprecated public ChunkedOutputStream(org.apache.http.io.SessionOutputBuffer, int) throws java.io.IOException;
     ctor @Deprecated public ChunkedOutputStream(org.apache.http.io.SessionOutputBuffer) throws java.io.IOException;
+    ctor @Deprecated public ChunkedOutputStream(org.apache.http.io.SessionOutputBuffer, int) throws java.io.IOException;
     method @Deprecated public void finish() throws java.io.IOException;
     method @Deprecated protected void flushCache() throws java.io.IOException;
     method @Deprecated protected void flushCacheWithAppend(byte[], int, int) throws java.io.IOException;
@@ -3408,18 +3407,18 @@ package org.apache.http.io {
   @Deprecated public interface SessionInputBuffer {
     method @Deprecated public org.apache.http.io.HttpTransportMetrics getMetrics();
     method @Deprecated public boolean isDataAvailable(int) throws java.io.IOException;
-    method @Deprecated public int read(byte[], int, int) throws java.io.IOException;
-    method @Deprecated public int read(byte[]) throws java.io.IOException;
     method @Deprecated public int read() throws java.io.IOException;
-    method @Deprecated public int readLine(org.apache.http.util.CharArrayBuffer) throws java.io.IOException;
+    method @Deprecated public int read(byte[]) throws java.io.IOException;
+    method @Deprecated public int read(byte[], int, int) throws java.io.IOException;
     method @Deprecated public String readLine() throws java.io.IOException;
+    method @Deprecated public int readLine(org.apache.http.util.CharArrayBuffer) throws java.io.IOException;
   }
 
   @Deprecated public interface SessionOutputBuffer {
     method @Deprecated public void flush() throws java.io.IOException;
     method @Deprecated public org.apache.http.io.HttpTransportMetrics getMetrics();
-    method @Deprecated public void write(byte[], int, int) throws java.io.IOException;
     method @Deprecated public void write(byte[]) throws java.io.IOException;
+    method @Deprecated public void write(byte[], int, int) throws java.io.IOException;
     method @Deprecated public void write(int) throws java.io.IOException;
     method @Deprecated public void writeLine(String) throws java.io.IOException;
     method @Deprecated public void writeLine(org.apache.http.util.CharArrayBuffer) throws java.io.IOException;
@@ -3430,10 +3429,10 @@ package org.apache.http.io {
 package org.apache.http.message {
 
   @Deprecated public abstract class AbstractHttpMessage implements org.apache.http.HttpMessage {
-    ctor @Deprecated protected AbstractHttpMessage(org.apache.http.params.HttpParams);
     ctor @Deprecated protected AbstractHttpMessage();
-    method @Deprecated public void addHeader(org.apache.http.Header);
+    ctor @Deprecated protected AbstractHttpMessage(org.apache.http.params.HttpParams);
     method @Deprecated public void addHeader(String, String);
+    method @Deprecated public void addHeader(org.apache.http.Header);
     method @Deprecated public boolean containsHeader(String);
     method @Deprecated public org.apache.http.Header[] getAllHeaders();
     method @Deprecated public org.apache.http.Header getFirstHeader(String);
@@ -3444,8 +3443,8 @@ package org.apache.http.message {
     method @Deprecated public org.apache.http.HeaderIterator headerIterator(String);
     method @Deprecated public void removeHeader(org.apache.http.Header);
     method @Deprecated public void removeHeaders(String);
-    method @Deprecated public void setHeader(org.apache.http.Header);
     method @Deprecated public void setHeader(String, String);
+    method @Deprecated public void setHeader(org.apache.http.Header);
     method @Deprecated public void setHeaders(org.apache.http.Header[]);
     method @Deprecated public void setParams(org.apache.http.params.HttpParams);
     field @Deprecated protected org.apache.http.message.HeaderGroup headergroup;
@@ -3461,8 +3460,8 @@ package org.apache.http.message {
   }
 
   @Deprecated public class BasicHeaderElement implements java.lang.Cloneable org.apache.http.HeaderElement {
-    ctor @Deprecated public BasicHeaderElement(String, String, org.apache.http.NameValuePair[]);
     ctor @Deprecated public BasicHeaderElement(String, String);
+    ctor @Deprecated public BasicHeaderElement(String, String, org.apache.http.NameValuePair[]);
     method @Deprecated public Object clone() throws java.lang.CloneNotSupportedException;
     method @Deprecated public String getName();
     method @Deprecated public org.apache.http.NameValuePair getParameter(int);
@@ -3473,8 +3472,8 @@ package org.apache.http.message {
   }
 
   @Deprecated public class BasicHeaderElementIterator implements org.apache.http.HeaderElementIterator {
-    ctor @Deprecated public BasicHeaderElementIterator(org.apache.http.HeaderIterator, org.apache.http.message.HeaderValueParser);
     ctor @Deprecated public BasicHeaderElementIterator(org.apache.http.HeaderIterator);
+    ctor @Deprecated public BasicHeaderElementIterator(org.apache.http.HeaderIterator, org.apache.http.message.HeaderValueParser);
     method @Deprecated public boolean hasNext();
     method @Deprecated public final Object next() throws java.util.NoSuchElementException;
     method @Deprecated public org.apache.http.HeaderElement nextElement() throws java.util.NoSuchElementException;
@@ -3550,9 +3549,9 @@ package org.apache.http.message {
   }
 
   @Deprecated public class BasicHttpResponse extends org.apache.http.message.AbstractHttpMessage implements org.apache.http.HttpResponse {
-    ctor @Deprecated public BasicHttpResponse(org.apache.http.StatusLine, org.apache.http.ReasonPhraseCatalog, java.util.Locale);
-    ctor @Deprecated public BasicHttpResponse(org.apache.http.StatusLine);
     ctor @Deprecated public BasicHttpResponse(org.apache.http.ProtocolVersion, int, String);
+    ctor @Deprecated public BasicHttpResponse(org.apache.http.StatusLine);
+    ctor @Deprecated public BasicHttpResponse(org.apache.http.StatusLine, org.apache.http.ReasonPhraseCatalog, java.util.Locale);
     method @Deprecated public org.apache.http.HttpEntity getEntity();
     method @Deprecated public java.util.Locale getLocale();
     method @Deprecated public org.apache.http.ProtocolVersion getProtocolVersion();
@@ -3562,9 +3561,9 @@ package org.apache.http.message {
     method @Deprecated public void setLocale(java.util.Locale);
     method @Deprecated public void setReasonPhrase(String);
     method @Deprecated public void setStatusCode(int);
-    method @Deprecated public void setStatusLine(org.apache.http.StatusLine);
     method @Deprecated public void setStatusLine(org.apache.http.ProtocolVersion, int);
     method @Deprecated public void setStatusLine(org.apache.http.ProtocolVersion, int, String);
+    method @Deprecated public void setStatusLine(org.apache.http.StatusLine);
   }
 
   @Deprecated public class BasicLineFormatter implements org.apache.http.message.LineFormatter {
@@ -3586,8 +3585,8 @@ package org.apache.http.message {
   }
 
   @Deprecated public class BasicLineParser implements org.apache.http.message.LineParser {
-    ctor @Deprecated public BasicLineParser(org.apache.http.ProtocolVersion);
     ctor @Deprecated public BasicLineParser();
+    ctor @Deprecated public BasicLineParser(org.apache.http.ProtocolVersion);
     method @Deprecated protected org.apache.http.ProtocolVersion createProtocolVersion(int, int);
     method @Deprecated protected org.apache.http.RequestLine createRequestLine(String, String, org.apache.http.ProtocolVersion);
     method @Deprecated protected org.apache.http.StatusLine createStatusLine(org.apache.http.ProtocolVersion, int, String);
@@ -3840,8 +3839,8 @@ package org.apache.http.protocol {
     method @Deprecated public void addInterceptor(org.apache.http.HttpResponseInterceptor, int);
     method @Deprecated public void addRequestInterceptor(org.apache.http.HttpRequestInterceptor);
     method @Deprecated public void addRequestInterceptor(org.apache.http.HttpRequestInterceptor, int);
-    method @Deprecated public void addResponseInterceptor(org.apache.http.HttpResponseInterceptor, int);
     method @Deprecated public void addResponseInterceptor(org.apache.http.HttpResponseInterceptor);
+    method @Deprecated public void addResponseInterceptor(org.apache.http.HttpResponseInterceptor, int);
     method @Deprecated public void clearInterceptors();
     method @Deprecated public void clearRequestInterceptors();
     method @Deprecated public void clearResponseInterceptors();
@@ -4064,8 +4063,8 @@ package org.apache.http.util {
   @Deprecated public final class ByteArrayBuffer {
     ctor @Deprecated public ByteArrayBuffer(int);
     method @Deprecated public void append(byte[], int, int);
-    method @Deprecated public void append(int);
     method @Deprecated public void append(char[], int, int);
+    method @Deprecated public void append(int);
     method @Deprecated public void append(org.apache.http.util.CharArrayBuffer, int, int);
     method @Deprecated public byte[] buffer();
     method @Deprecated public int byteAt(int);
@@ -4080,21 +4079,21 @@ package org.apache.http.util {
 
   @Deprecated public final class CharArrayBuffer {
     ctor @Deprecated public CharArrayBuffer(int);
-    method @Deprecated public void append(char[], int, int);
-    method @Deprecated public void append(String);
-    method @Deprecated public void append(org.apache.http.util.CharArrayBuffer, int, int);
-    method @Deprecated public void append(org.apache.http.util.CharArrayBuffer);
-    method @Deprecated public void append(char);
     method @Deprecated public void append(byte[], int, int);
-    method @Deprecated public void append(org.apache.http.util.ByteArrayBuffer, int, int);
+    method @Deprecated public void append(char);
+    method @Deprecated public void append(char[], int, int);
     method @Deprecated public void append(Object);
+    method @Deprecated public void append(String);
+    method @Deprecated public void append(org.apache.http.util.ByteArrayBuffer, int, int);
+    method @Deprecated public void append(org.apache.http.util.CharArrayBuffer);
+    method @Deprecated public void append(org.apache.http.util.CharArrayBuffer, int, int);
     method @Deprecated public char[] buffer();
     method @Deprecated public int capacity();
     method @Deprecated public char charAt(int);
     method @Deprecated public void clear();
     method @Deprecated public void ensureCapacity(int);
-    method @Deprecated public int indexOf(int, int, int);
     method @Deprecated public int indexOf(int);
+    method @Deprecated public int indexOf(int, int, int);
     method @Deprecated public boolean isEmpty();
     method @Deprecated public boolean isFull();
     method @Deprecated public int length();
@@ -4106,8 +4105,8 @@ package org.apache.http.util {
 
   @Deprecated public final class EncodingUtils {
     method @Deprecated public static byte[] getAsciiBytes(String);
-    method @Deprecated public static String getAsciiString(byte[], int, int);
     method @Deprecated public static String getAsciiString(byte[]);
+    method @Deprecated public static String getAsciiString(byte[], int, int);
     method @Deprecated public static byte[] getBytes(String, String);
     method @Deprecated public static String getString(byte[], int, int, String);
     method @Deprecated public static String getString(byte[], String);
@@ -4116,8 +4115,8 @@ package org.apache.http.util {
   @Deprecated public final class EntityUtils {
     method @Deprecated public static String getContentCharSet(org.apache.http.HttpEntity) throws org.apache.http.ParseException;
     method @Deprecated public static byte[] toByteArray(org.apache.http.HttpEntity) throws java.io.IOException;
-    method @Deprecated public static String toString(org.apache.http.HttpEntity, String) throws java.io.IOException, org.apache.http.ParseException;
     method @Deprecated public static String toString(org.apache.http.HttpEntity) throws java.io.IOException, org.apache.http.ParseException;
+    method @Deprecated public static String toString(org.apache.http.HttpEntity, String) throws java.io.IOException, org.apache.http.ParseException;
   }
 
   @Deprecated public final class ExceptionUtils {
@@ -4127,8 +4126,8 @@ package org.apache.http.util {
   @Deprecated public final class LangUtils {
     method @Deprecated public static boolean equals(Object, Object);
     method @Deprecated public static boolean equals(Object[], Object[]);
-    method @Deprecated public static int hashCode(int, int);
     method @Deprecated public static int hashCode(int, boolean);
+    method @Deprecated public static int hashCode(int, int);
     method @Deprecated public static int hashCode(int, Object);
     field @Deprecated public static final int HASH_OFFSET = 37; // 0x25
     field @Deprecated public static final int HASH_SEED = 17; // 0x11
@@ -4142,8 +4141,8 @@ package org.apache.http.util {
     method @Deprecated public final String getPackage();
     method @Deprecated public final String getRelease();
     method @Deprecated public final String getTimestamp();
-    method @Deprecated public static final org.apache.http.util.VersionInfo[] loadVersionInfo(String[], ClassLoader);
     method @Deprecated public static final org.apache.http.util.VersionInfo loadVersionInfo(String, ClassLoader);
+    method @Deprecated public static final org.apache.http.util.VersionInfo[] loadVersionInfo(String[], ClassLoader);
     field @Deprecated public static final String PROPERTY_MODULE = "info.module";
     field @Deprecated public static final String PROPERTY_RELEASE = "info.release";
     field @Deprecated public static final String PROPERTY_TIMESTAMP = "info.timestamp";
