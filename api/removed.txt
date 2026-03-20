@@ -1,5 +1,4 @@
 // Signature format: 6.0
 // - style=java
-// - sort-whole-extends-list=no
 // - strip-java-lang-prefix=legacy
 // - type-argument-spacing=legacy

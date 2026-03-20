@@ -1,6 +1,5 @@
 // Signature format: 6.0
 // - style=java
-// - sort-whole-extends-list=no
 // - strip-java-lang-prefix=legacy
 // - type-argument-spacing=legacy
 package android.net.compatibility {
@@ -1493,7 +1492,7 @@ package org.apache.http.client.methods {
 
 package org.apache.http.client.params {
 
-  @Deprecated public interface AllClientPNames extends org.apache.http.params.CoreConnectionPNames org.apache.http.auth.params.AuthPNames org.apache.http.client.params.ClientPNames org.apache.http.conn.params.ConnConnectionPNames org.apache.http.conn.params.ConnManagerPNames org.apache.http.conn.params.ConnRoutePNames org.apache.http.cookie.params.CookieSpecPNames org.apache.http.params.CoreProtocolPNames {
+  @Deprecated public interface AllClientPNames extends org.apache.http.auth.params.AuthPNames org.apache.http.client.params.ClientPNames org.apache.http.conn.params.ConnConnectionPNames org.apache.http.conn.params.ConnManagerPNames org.apache.http.conn.params.ConnRoutePNames org.apache.http.cookie.params.CookieSpecPNames org.apache.http.params.CoreConnectionPNames org.apache.http.params.CoreProtocolPNames {
   }
 
   @Deprecated public final class AuthPolicy {
@@ -1711,7 +1710,7 @@ package org.apache.http.conn {
     method @Deprecated public org.apache.http.HttpHost getHost();
   }
 
-  @Deprecated public interface ManagedClientConnection extends org.apache.http.HttpClientConnection org.apache.http.conn.ConnectionReleaseTrigger org.apache.http.HttpInetConnection {
+  @Deprecated public interface ManagedClientConnection extends org.apache.http.conn.ConnectionReleaseTrigger org.apache.http.HttpClientConnection org.apache.http.HttpInetConnection {
     method @Deprecated public org.apache.http.conn.routing.HttpRoute getRoute();
     method @Deprecated public javax.net.ssl.SSLSession getSSLSession();
     method @Deprecated public Object getState();
